@@ -66,6 +66,8 @@ let pl = () => {
 }
 
 var stop_timer, egg_timer;
+var song_len = 180000;
+var egg_len = 180000;
 let radioPlaying = () => {
     b.removeEventListener("click", radioPlaying)
     text.classList.toggle('is-text-active')
@@ -81,6 +83,7 @@ let radioPlaying = () => {
 
             egg_timer = setTimeout(function(){
                 a.src = "lucky.aac";
+                song_len = egg_len;
                 pl()
                 
                 b.removeEventListener("click", radioPlaying)
@@ -92,14 +95,14 @@ let radioPlaying = () => {
 
                         b.addEventListener("click", radioPlaying)
                     }
-                }, 240000); // guofan - egg song len
+                }, egg_len); // guofan - egg song len
             }, 10000); // guofan - egg wait time
         }
-    }, 240000); // guofan - play len
+    }, song_len); // guofan - play len
     setTimeout(function(){
         text.classList.toggle('is-text-active')
         b.addEventListener("click", radioPlaying)
-    }, 2500);
+    }, 4500);
 }
 
 /*******************/
