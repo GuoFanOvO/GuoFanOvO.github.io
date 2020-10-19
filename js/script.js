@@ -48,17 +48,19 @@ let tf = () => {
 let af = () => {
     // a.loop = true;
 
-    if (a.paused) a.play();
+    if (a.paused) {
+        a.play();
+        playing = true;
+    }
     else {
         a.pause();
         a.currentTime = 0;
+        playing = false;
     }
 }
 
 let pl = () => {
     tf()
-
-    clearTimeout(stop_timer);
 
     setTimeout(function(){
         af()
@@ -66,18 +68,20 @@ let pl = () => {
 }
 
 var stop_timer, egg_timer;
-var song_len = 180000;
-var egg_len = 180000;
+var song_len = 180000; // guofan - play len
+var egg_len = 180000; // guofan - egg song len
+var playing = false;
 let radioPlaying = () => {
     b.removeEventListener("click", radioPlaying)
     text.classList.toggle('is-text-active')
 
     clearTimeout(egg_timer);
+    clearTimeout(stop_timer);
 
     pl()
 
     stop_timer = setTimeout(function(){
-        if (!a.paused) {
+        if (playing) {
             tf()
             af()
 
@@ -89,16 +93,14 @@ let radioPlaying = () => {
                 b.removeEventListener("click", radioPlaying)
 
                 setTimeout(function(){
-                    if (!a.paused) {
-                        tf()
-                        af()
+                    tf()
+                    af()
 
-                        b.addEventListener("click", radioPlaying)
-                    }
-                }, egg_len); // guofan - egg song len
+                    b.addEventListener("click", radioPlaying)
+                }, egg_len);
             }, 10000); // guofan - egg wait time
         }
-    }, song_len); // guofan - play len
+    }, song_len);
     setTimeout(function(){
         text.classList.toggle('is-text-active')
         b.addEventListener("click", radioPlaying)
