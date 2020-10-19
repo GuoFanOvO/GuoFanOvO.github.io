@@ -48,7 +48,7 @@ let tf = () => {
 let af = () => {
     // a.loop = true;
 
-    if (a.paused) {
+    if (!playing) {
         a.play();
         playing = true;
     }
@@ -68,7 +68,7 @@ let pl = () => {
 }
 
 var stop_timer, egg_timer;
-var song_len = 173000; // guofan - play len
+var song_len = 174000; // guofan - play len
 var egg_len = 251000; // guofan - egg song len
 var playing = false;
 let radioPlaying = () => {
@@ -98,7 +98,7 @@ let radioPlaying = () => {
 
                     b.addEventListener("click", radioPlaying)
                 }, egg_len);
-            }, 600000); // guofan - egg wait time
+            }, 300000); // guofan - egg wait time
         }
     }, song_len);
     setTimeout(function(){
