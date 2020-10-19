@@ -46,7 +46,7 @@ let tf = () => {
 }
 
 let af = () => {
-    a.loop = true;
+    // a.loop = true;
 
     if (a.paused) a.play();
     else {
@@ -55,24 +55,51 @@ let af = () => {
     }
 }
 
-
-let radioPlaying = () => {
-    b.removeEventListener("click", radioPlaying)
-    text.classList.toggle('is-text-active')
+let pl = () => {
     tf()
+
+    clearTimeout(stop_timer);
 
     setTimeout(function(){
         af()
     }, 1000);
+}
 
-    setTimeout(function(){
-        tf()
-        af()
-    }, 240000);  //  音乐播放时间  算好
+var stop_timer, egg_timer;
+let radioPlaying = () => {
+    b.removeEventListener("click", radioPlaying)
+    text.classList.toggle('is-text-active')
+
+    clearTimeout(egg_timer);
+
+    pl()
+
+    stop_timer = setTimeout(function(){
+        if (!a.paused) {
+            tf()
+            af()
+
+            egg_timer = setTimeout(function(){
+                a.src = "lucky.aac";
+                pl()
+                
+                b.removeEventListener("click", radioPlaying)
+
+                setTimeout(function(){
+                    if (!a.paused) {
+                        tf()
+                        af()
+
+                        b.addEventListener("click", radioPlaying)
+                    }
+                }, 240000); // guofan - egg song len
+            }, 10000); // guofan - egg wait time
+        }
+    }, 240000); // guofan - play len
     setTimeout(function(){
         text.classList.toggle('is-text-active')
         b.addEventListener("click", radioPlaying)
-    }, 4500);
+    }, 2500);
 }
 
 /*******************/
