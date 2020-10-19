@@ -86,7 +86,7 @@ let radioPlaying = () => {
             af()
 
             egg_timer = setTimeout(function(){
-                a.src = "lucky.aac";
+                a.src = "luck.aac";
                 song_len = egg_len;
                 pl()
                 
