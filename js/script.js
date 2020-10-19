@@ -68,8 +68,8 @@ let pl = () => {
 }
 
 var stop_timer, egg_timer;
-var song_len = 180000; // guofan - play len
-var egg_len = 180000; // guofan - egg song len
+var song_len = 173000; // guofan - play len
+var egg_len = 251000; // guofan - egg song len
 var playing = false;
 let radioPlaying = () => {
     b.removeEventListener("click", radioPlaying)
