@@ -68,7 +68,7 @@ let pl = () => {
 }
 
 var stop_timer, egg_timer;
-var song_len = 174000; // guofan - play len
+var song_len = 206000; // guofan - play len
 var egg_len = 251000; // guofan - egg song len
 var playing = false;
 let radioPlaying = () => {
