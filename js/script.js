@@ -98,7 +98,7 @@ let radioPlaying = () => {
 
                     b.addEventListener("click", radioPlaying)
                 }, egg_len);
-            }, 300000); // guofan - egg wait time
+            }, 600000); // guofan - egg wait time
         }
     }, song_len);
     setTimeout(function(){
