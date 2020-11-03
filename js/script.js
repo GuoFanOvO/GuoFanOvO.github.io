@@ -46,8 +46,6 @@ let tf = () => {
 }
 
 let af = () => {
-    // a.loop = true;
-
     if (!playing) {
         a.play();
         playing = true;
@@ -68,39 +66,41 @@ let pl = () => {
 }
 
 var stop_timer, egg_timer;
-var song_len = 206000; // guofan - play len
-var egg_len = 251000; // guofan - egg song len
 var playing = false;
+var song_index = 0;
+var song_index_max = 2;
 let radioPlaying = () => {
     b.removeEventListener("click", radioPlaying)
     text.classList.toggle('is-text-active')
 
     clearTimeout(egg_timer);
-    clearTimeout(stop_timer);
+    clearInterval(stop_timer);
+
+    if (!playing)
+    {
+        a.src = "song/bgm" + song_index + ".aac";
+        song_index++;
+        if (song_index > song_index_max)
+        {
+            song_index = 0;
+        }
+    }
 
     pl()
 
-    stop_timer = setTimeout(function(){
-        if (playing) {
+    stop_timer = setInterval(function() {
+        if (playing && a.paused)
+        {
             tf()
             af()
-
-            egg_timer = setTimeout(function(){
-                a.src = "luck.aac";
-                song_len = egg_len;
-                pl()
-                
-                b.removeEventListener("click", radioPlaying)
-
-                setTimeout(function(){
-                    tf()
-                    af()
-
-                    b.addEventListener("click", radioPlaying)
-                }, egg_len);
-            }, 600000); // guofan - egg wait time
         }
-    }, song_len);
+    }, 2000);
+
+    egg_timer = setTimeout(function(){
+        a.src = "luck.aac";
+        pl()
+    }, 600000); // guofan - egg wait time
+
     setTimeout(function(){
         text.classList.toggle('is-text-active')
         b.addEventListener("click", radioPlaying)
