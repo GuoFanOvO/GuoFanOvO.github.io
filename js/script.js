@@ -65,10 +65,23 @@ let pl = () => {
     }, 1000);
 }
 
+/*
+ * 0 - hmbb
+ * 1 - wdxhnnhzd
+ * 2 - wyyl
+ * 3 - wll
+ * 4 - ttd
+ * 5 - gz
+ * 6 - zswd
+ * 7 - nn
+ * 8 - dx
+ * 9 - xjl
+ */
+
 var stop_timer, egg_timer;
 var playing = false;
 var song_index = 0;
-var song_index_max = 2;
+var song_index_max = 9;
 let radioPlaying = () => {
     b.removeEventListener("click", radioPlaying)
     text.classList.toggle('is-text-active')
@@ -96,15 +109,15 @@ let radioPlaying = () => {
         }
     }, 2000);
 
-    egg_timer = setTimeout(function(){
+    egg_timer = setTimeout(function() {
         a.src = "luck.aac";
         pl()
     }, 600000); // guofan - egg wait time
 
-    setTimeout(function(){
+    setTimeout(function() {
         text.classList.toggle('is-text-active')
         b.addEventListener("click", radioPlaying)
-    }, 4500);
+    }, 2500);
 }
 
 /*******************/
