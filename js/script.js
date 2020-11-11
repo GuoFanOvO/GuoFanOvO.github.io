@@ -82,6 +82,7 @@ var stop_timer, egg_timer;
 var playing = false;
 var song_index = 0;
 var song_index_max = 9;
+var first_open = true;
 let radioPlaying = () => {
     b.removeEventListener("click", radioPlaying)
     text.classList.toggle('is-text-active')
@@ -89,13 +90,16 @@ let radioPlaying = () => {
     clearTimeout(egg_timer);
     clearInterval(stop_timer);
 
-    if (!playing)
+    if (first_open)
     {
-        a.src = "song/bgm" + song_index + ".aac";
-        song_index++;
-        if (song_index > song_index_max)
+        first_open = false;
+    }
+    else
+    {
+        if (!playing)
         {
-            song_index = 0;
+            song_index = Math.floor(Math.random()*10);
+            a.src = "song/bgm" + song_index + ".aac";
         }
     }
 
