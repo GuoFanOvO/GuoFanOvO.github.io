@@ -81,7 +81,7 @@ let pl = () => {
 var stop_timer, egg_timer;
 var playing = false;
 var song_index = 0;
-var song_index_max = 9;
+var song_index_last = 0;
 var first_open = true;
 let radioPlaying = () => {
     b.removeEventListener("click", radioPlaying)
@@ -98,8 +98,12 @@ let radioPlaying = () => {
     {
         if (!playing)
         {
-            song_index = Math.floor(Math.random()*10);
+            while (song_index == song_index_last)
+            {
+                song_index = Math.floor(Math.random()*10);
+            }
             a.src = "song/bgm" + song_index + ".aac";
+            song_index_last = song_index;
         }
     }
 
