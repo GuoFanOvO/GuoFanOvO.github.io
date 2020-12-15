@@ -30,7 +30,7 @@ html {
   font-family: "Arvo", Helvetica, sans-serif;
   font-family: 12px;
   color: #555;
-  background: #F8FFE5;
+  background: #2fd7d5;
 }
 
 strong {
@@ -76,8 +76,8 @@ h1 {
 
 .directions {
   padding: 2rem;
-  border-top: 1px solid #9a9a95;
-  border-bottom: 1px solid #9a9a95;
+  border-top: 1px solid #353535;
+  border-bottom: 1px solid #353535;
 }
 
 .container {
