@@ -98,10 +98,10 @@ let radioPlaying = () => {
     {
         if (!playing)
         {
-            while (song_index == song_index_last)
-            {
-                song_index = Math.floor(Math.random()*10);
-            }
+            // while (song_index == song_index_last)
+            // {
+            //     song_index = Math.floor(Math.random()*10);
+            // }
             a.src = "song/bgm" + song_index + ".aac";
             song_index_last = song_index;
         }
@@ -118,7 +118,7 @@ let radioPlaying = () => {
     }, 2000);
 
     egg_timer = setTimeout(function() {
-        a.src = "luck.aac";
+        a.src = "song/bgm2.aac";// "luck.aac";
         pl()
     }, 600000); // guofan - egg wait time
 
