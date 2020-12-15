@@ -83,6 +83,7 @@ var playing = false;
 var song_index = 0;
 var song_index_last = 0;
 var first_open = true;
+var song_cos_url = "https://dovier-1253581534.cos.ap-guangzhou.myqcloud.com";
 let radioPlaying = () => {
     b.removeEventListener("click", radioPlaying)
     text.classList.toggle('is-text-active')
@@ -102,7 +103,7 @@ let radioPlaying = () => {
             // {
             //     song_index = Math.floor(Math.random()*10);
             // }
-            a.src = "song/bgm" + song_index + ".aac";
+            a.src = song_cos_url + "/bgm0.aac";// "song/bgm" + song_index + ".aac";
             song_index_last = song_index;
         }
     }
@@ -118,7 +119,7 @@ let radioPlaying = () => {
     }, 2000);
 
     egg_timer = setTimeout(function() {
-        a.src = "song/bgm2.aac";// "luck.aac";
+        a.src = song_cos_url + "/bgm1.aac";// "luck.aac";
         pl()
     }, 600000); // guofan - egg wait time
 
