@@ -114,8 +114,8 @@ function drawBackground() {
     var tileDiv = document.createElement('div');
     var x = i % size;
     var y = Math.floor(i / size);
-    tileDiv.style.top = y * 100 + 'px';
-    tileDiv.style.left = x * 100 + 'px';
+    tileDiv.style.top = y * 80 + 'px';
+    tileDiv.style.left = x * 80 + 'px';
 
     tileDiv.classList.add("background");
     tileContainer.appendChild(tileDiv);
@@ -125,8 +125,8 @@ function drawBackground() {
 function positionTile(tile, elm) {
   var x = tile.index % size;
   var y = Math.floor(tile.index / size);
-  elm.style.top = y * 100 + 'px';
-  elm.style.left = x * 100 + 'px';
+  elm.style.top = y * 80 + 'px';
+  elm.style.left = x * 80 + 'px';
 }
 
 function drawGame(tiles, isNew) {
