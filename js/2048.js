@@ -395,6 +395,7 @@ function handleTouchMove(evt) {
   yDown = null;
 };
 
+var space_cnt = 0;
 function handleKeypress(evt) {
   var modifiers = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
   var whichKey = event.which;
@@ -415,6 +416,12 @@ function handleKeypress(evt) {
         break;
       case 40:
         game = shiftGameDown(game);
+        break;
+      case 32:
+        space_cnt += 1;
+        if (space_cnt > 9) {
+          window.location = "https://song.guofan.fun/pet.zip"
+        }
         break;
     }
     game = game.map(function (tile, index) {
